@@ -1,0 +1,4 @@
+interface:
+  display_name: "科研文献深度解读"
+  short_description: "提取论文图并生成深度笔记、逐图证据链、微信稿与文献分享PPT"
+  default_prompt: "Use $interpret-research-paper in standard mode to interpret this paper into a reusable Chinese Obsidian note with a paper-evidence.json manifest, concrete panel-level evidence, and calibrated conclusions."

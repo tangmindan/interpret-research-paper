@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:interpret-research-paper:paper-evidence:1.0.0",
+  "title": "Paper Evidence",
+  "type": "object",
+  "required": ["schema_version", "skill_version", "paper_id", "source", "mode", "stages", "claims", "figures", "user_annotations", "history"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "skill_version": {"type": "string"},
+    "paper_id": {
+      "type": "object",
+      "required": ["canonical_id", "kind", "value"],
+      "properties": {
+        "canonical_id": {"type": "string", "pattern": "^(doi|pmid|arxiv|sha256):.+"},
+        "kind": {"enum": ["doi", "pmid", "arxiv", "sha256"]},
+        "value": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "bibliography": {"type": "object"},
+    "source": {
+      "type": "object",
+      "required": ["path", "source_sha256", "size_bytes"],
+      "properties": {
+        "path": {"type": "string"},
+        "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "version": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
+    "mode": {
+      "type": "object",
+      "required": ["requested", "completed"],
+      "properties": {
+        "requested": {"enum": ["quick", "standard", "deep"]},
+        "completed": {"enum": ["none", "quick", "standard", "deep"]}
+      },
+      "additionalProperties": false
+    },
+    "fingerprints": {"type": "object", "additionalProperties": {"type": "string"}},
+    "stages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "outputs"],
+        "properties": {
+          "status": {"enum": ["pending", "complete", "invalid"]},
+          "input_hash": {"type": ["string", "null"]},
+          "completed_at": {"type": ["string", "null"], "format": "date-time"},
+          "outputs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "study": {"type": "object"},
+    "methods": {"type": "array", "items": {"type": "object"}},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "statement", "evidence", "boundary"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "statement": {"type": "string"},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "boundary": {"type": "string"},
+          "confidence": {"enum": ["low", "medium", "high"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "figures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["figure_id", "qa_status", "panels"],
+        "properties": {
+          "figure_id": {"type": "string"},
+          "file": {"type": ["string", "null"]},
+          "qa_status": {"enum": ["pending", "passed", "failed"]},
+          "panels": {"type": "array", "items": {"type": "object"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "limitations": {"type": "array", "items": {"type": "object"}},
+    "code_and_data": {"type": "object"},
+    "unresolved": {"type": "array", "items": {"type": "string"}},
+    "user_annotations": {"type": "array", "items": {"type": "object"}},
+    "history": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

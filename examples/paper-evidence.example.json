@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "skill_version": "1.0.0",
+  "paper_id": {"canonical_id": "doi:10.0000/example", "kind": "doi", "value": "10.0000/example"},
+  "bibliography": {"title": "Synthetic example; not a real paper"},
+  "source": {"path": "paper.pdf", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "size_bytes": 1, "version": null},
+  "mode": {"requested": "standard", "completed": "quick"},
+  "fingerprints": {"source": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "figure_extractor": "1.0.0", "templates": "1"},
+  "stages": {
+    "bibliography": {"status": "complete", "input_hash": null, "completed_at": "2026-09-08T00:00:00Z", "outputs": []},
+    "parse": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []},
+    "source_map": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []},
+    "figures": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []},
+    "figure_qa": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []},
+    "interpretation": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []},
+    "deliverables": {"status": "pending", "input_hash": null, "completed_at": null, "outputs": []}
+  },
+  "study": {},
+  "methods": [],
+  "claims": [],
+  "figures": [],
+  "limitations": [],
+  "code_and_data": {},
+  "unresolved": ["Replace synthetic values during a real run."],
+  "user_annotations": [],
+  "history": [{"at": "2026-09-08T00:00:00Z", "event": "example_created"}]
+}
