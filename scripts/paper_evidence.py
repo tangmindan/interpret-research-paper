@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SCHEMA_VERSION = "1.0.0"
-SKILL_VERSION = "1.0.0"
+SKILL_VERSION = "1.0.1"
 MODES = {"none": 0, "quick": 1, "standard": 2, "deep": 3}
 STAGES = ("bibliography", "parse", "source_map", "figures", "figure_qa", "interpretation", "deliverables")
 DESCENDANTS = {

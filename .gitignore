@@ -4,6 +4,7 @@ __pycache__/
 .ruff_cache/
 .venv/
 .paper-cache/
+.interpret-research-paper.json
 paper-evidence.json
 *.pdf
 figures/

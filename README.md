@@ -32,6 +32,8 @@ Invoke it with a local paper, for example:
 Use $interpret-research-paper in standard mode to interpret this PDF as a Chinese Obsidian note.
 ```
 
+For persistent Obsidian or slide output, pass `vault_root`, `note_dir`, `figure_dir`, or `ppt_dir` explicitly, or copy `config.example.json` to the ignored local file `.interpret-research-paper.json`. No personal output path is built into the Skill.
+
 ## Evidence manifest
 
 Initialize state:

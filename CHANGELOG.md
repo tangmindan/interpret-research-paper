@@ -4,6 +4,14 @@ This project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-08
+
+### Fixed
+
+- Removed the original author's personal Obsidian and PPT paths from public instructions.
+- Added explicit output parameters and an ignored project-local configuration file.
+- Added validation preventing common personal absolute paths from entering public guidance.
+
 ## [1.0.0] - 2026-09-08
 
 ### Added

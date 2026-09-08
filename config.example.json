@@ -1,0 +1,8 @@
+{
+  "vault_root": "path/to/literature-library",
+  "note_dir": null,
+  "source_dir": null,
+  "figure_dir": null,
+  "ppt_dir": null,
+  "cache_dir": null
+}

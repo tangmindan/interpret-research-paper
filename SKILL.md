@@ -128,7 +128,9 @@ If the user asks about a caption or significance marker, locate the visual place
 
 ## Obsidian notes
 
-- Default personal vault location: `D:\Notes\Obsidian Vault\芝士\文献解读` when accessible and not overridden.
+- Resolve output locations from explicit user parameters or project configuration. Read [references/configuration.md](references/configuration.md) before writing persistent notes, figures, archived PDFs, slides, or articles.
+- Accept `vault_root`, `note_dir`, `source_dir`, `figure_dir`, and `ppt_dir` as parameters. A user-supplied value for the current request takes precedence over configuration.
+- If no persistent destination is configured, write ordinary artifacts in the current task workspace. If the user explicitly requests an Obsidian-vault or final-PPT delivery and its destination cannot be discovered safely, ask for that destination; never guess a personal path.
 - Use YAML properties, stable headings, Obsidian embeds, callouts, and wiki-links where useful.
 - Format all LaTeX for Obsidian with dollar delimiters. Use `$...$` for inline math and `$$...$$` for display math. Never use `\(...\)` or `\[...\]` in Obsidian Markdown. Before delivery, scan the note and convert any such delimiters while preserving existing valid `$$...$$` blocks.
 - Use [assets/literature-note-template.md](assets/literature-note-template.md) as the starting structure for a new note.
@@ -138,10 +140,10 @@ If the user asks about a caption or significance marker, locate the visual place
 
 ### Literature library layout and naming
 
-Use this fixed structure unless the user explicitly overrides it:
+When `vault_root` is configured, use this relative structure unless the user overrides it:
 
 ```text
-D:\Notes\Obsidian Vault\芝士\文献解读\
+<vault_root>/
   <paper note>.md
   source\
     <FirstAuthor>_<YYYY>_<Journal>_<ShortTopic>.pdf
@@ -168,7 +170,7 @@ Apply these rules:
 
 For a new PDF-to-Obsidian workflow, extract main figures by default unless the user opts out.
 
-1. Create the required note-specific image directory at `D:\Notes\Obsidian Vault\芝士\文献解读\图片\<FirstAuthor>_<YYYY>_<Journal>_<ShortTopic>\`.
+1. Create the note-specific image directory at `<figure_dir>/<FirstAuthor>_<YYYY>_<Journal>_<ShortTopic>/`. When only `vault_root` is configured, `figure_dir` defaults to `<vault_root>/图片`.
 2. Run `scripts/extract_pdf_figures.py <pdf> <image-dir> --keep-candidates` using PyMuPDF and Pillow. Combine PDF image objects, vector drawings, positioned text, and caption proximity; do not infer the crop from caption position alone.
 3. Read `figure-manifest.json` and insert each `![[图片/<paper-folder>/Fig_NN.png]]` immediately after the matching result or figure-analysis section.
 4. Inspect every candidate-page render and extracted image. Check that all panel labels, axes, legends, scale bars, and significance annotations are present and surrounding article text is excluded. Treat every automatic selection as unverified until this inspection passes.
@@ -180,7 +182,7 @@ For a new PDF-to-Obsidian workflow, extract main figures by default unless the u
 10. Keep the manifest beside the images only when useful for traceability; keep the note embeds clean.
 ### Presentation storage
 
-Use `D:\Notes\Obsidian Vault\芝士\文献解读\PPT` as the default final output directory for literature-sharing PowerPoint decks unless the user explicitly supplies another destination.
+Resolve the final slide destination from `ppt_dir`. When only `vault_root` is configured, `ppt_dir` defaults to `<vault_root>/PPT`; otherwise use the current task workspace unless the user requested a persistent destination.
 
 1. Create the `PPT` directory when it does not exist.
 2. Store only the final verified `.pptx` there; keep builders, renders, montages, and QA files in the task workspace or temporary directory.
