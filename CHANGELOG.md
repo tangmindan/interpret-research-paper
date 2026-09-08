@@ -4,6 +4,16 @@ This project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-09-08
+
+### Changed
+
+- Reduced `SKILL.md` from 238 lines to a 65-line routing entrypoint.
+- Split scientific interpretation, figure handling, Obsidian output, and accessible-article guidance into conditionally loaded references.
+- Consolidated duplicated results/Figure guidance and aligned the note template.
+- Removed organization-specific presentation assets and fonts from public defaults.
+- Added size-budget and broken-reference checks for the Skill entrypoint.
+
 ## [1.0.1] - 2026-09-08
 
 ### Fixed

@@ -56,9 +56,9 @@ Use the complete original figure with `contain`. If labels are too small, add de
 ## Brand and files
 
 - Use the resolved `ppt_dir` for final decks. If it is unset, follow [configuration.md](configuration.md); never infer a personal absolute path.
-- When available, use the user's 联川生物封面页、目录页、结束页 and `联川生物科学技术研究院_logo_透明.png` from `PPT\PPT图片素材`.
-- Place the full logo at the cover's upper right and a small logo at the body-page lower right. Preserve aspect ratio and color.
-- Use Source Han Sans SC for the deck. Reserve Source Han Serif SC for the original paper title, quotations, and closing message.
+- Use organization-specific templates, logos, and fonts only when the user supplies or configures them for the current project.
+- Preserve logo aspect ratio and brand colors; do not infer a private asset path or organization identity.
+- Prefer broadly available CJK fonts when no typography system is supplied, and verify glyph rendering on every slide.
 - Do not overwrite an existing deck unless explicitly requested. Increment `_v1`, `_v2`, or another version suffix.
 
 ## QA

@@ -6,6 +6,8 @@ A Chinese-first Codex/Agent Skill for evidence-grounded interpretation of scient
 
 Most paper readers optimize for summaries. This project optimizes for traceability: claims stay close to figures, panels, methods, statistics, and limitations. A machine-readable `paper-evidence.json` supports caching and incremental updates without overwriting user annotations.
 
+The entrypoint is intentionally thin. `SKILL.md` keeps cross-task evidence rules and routes to task-specific files under `references/`; a quick read does not load Obsidian, slide, article, or deep-statistics instructions unnecessarily.
+
 ## Modes
 
 - `quick`: first-pass triage.
