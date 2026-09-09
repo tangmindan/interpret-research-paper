@@ -19,11 +19,34 @@ Default sequence:
 11. Application prospects and evidence boundaries
 12. Closing synthesis and discussion question
 
-Build a cumulative story, not a figure inventory.
+Build a cumulative story, not a figure inventory. Construct and validate result units using [logic-chain.md](logic-chain.md) before deciding slide order.
+
+## Storyboard before slides
+
+Create a storyboard containing the presentation goal, audience, source result order, presentation result order, reorder rationale, and slide modules. Sort primarily by audience prerequisites, scientific dependency, importance, and evidence strength; use paper order only when it remains the clearest route.
+
+Do not silently imply that presentation order is experimental chronology. Keep source references and chronology visible when reordering could change interpretation.
+
+Treat one result unit as one presentation **module**, not necessarily one slide. A compact result may fit on one slide. A dense result should split into:
+
+1. question, previous finding, rationale, and approach;
+2. decisive visual evidence and main answer;
+3. validation, boundary, and transition when needed.
+
+Keep the same result label across split slides. Do not compress a complete Figure until axes, legends, labels, or the decisive comparison become unreadable.
+
+For each result module, specify:
+
+```text
+slide headline → previous finding → current question → why this experiment
+→ approach → key evidence → main answer → boundary → transition
+```
+
+The headline must not exceed what the evidence shown by that point supports. Put functional or causal language only after the corresponding perturbation or causal evidence.
 
 ## Combined results and figure walkthrough
 
-Use one section named `主要结果与逐图解读`. Organize it by Figure and, for complex figures, by question blocks. Do not add a separate main-results overview that repeats the later figure section.
+Use one section named `主要结果与逐图解读`. In a Figure narrative, organize it by Figure and question block. In a logic-chain or presentation narrative, organize it by result unit and cite every supporting Figure or panel inside that unit. Do not add a separate main-results overview that repeats the later evidence section.
 
 Each result question block should appear in this order:
 
@@ -64,8 +87,10 @@ Use the complete original figure with `contain`. If labels are too small, add de
 ## QA
 
 - Render and inspect every slide.
-- Confirm `主要结果与逐图解读` is one combined section organized by Figure and question block.
+- Confirm `主要结果与逐图解读` is one combined section organized according to the selected narrative view.
 - Confirm the question, strategy, and series conclusion precede the corresponding figure evidence.
+- Confirm source order, presentation order, and material reorder reasons are recorded for a reordered deck.
+- Confirm each result unit maps to a coherent slide module; do not require one result to fit one slide.
 - Confirm every relevant subpanel and essential supplementary figure is explained.
 - Confirm design figures remain descriptive rather than result-driven.
 - Check figure labels, axes, sample sizes, title wrapping, overflow, logo placement, page numbers, and source notes.

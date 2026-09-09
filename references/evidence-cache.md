@@ -22,14 +22,29 @@ Do not copy copyrighted full text beyond the user-authorized project or library.
 
 Record source SHA-256, schema and skill versions, parser config/version, figure extractor config/version, interpretation profile, and deliverable template hashes. Timestamps are audit metadata, not cache keys.
 
+Depth and narrative are independent. `mode` records evidence depth; `narrative` records requested and completed views. `result_units` store reusable scientific reasoning, while `presentation_plans` store audience-specific ordering.
+
 ## Dependencies
 
 ```text
 identity -> bibliography
-source -> parse -> source_map -> interpretation -> deliverables
+source -> parse -> source_map -> interpretation -> reasoning -> deliverables
                 -> figures -> figure_qa -> interpretation
 mode -------------------------------------> interpretation
-templates --------------------------------------------> deliverables
+narrative ------------------------------------------------------> deliverables
+templates ------------------------------------------------------> deliverables
 ```
 
 Invalidate a changed node and descendants only. Never replace verified evidence with unverified evidence. Preserve `user_annotations`, append history events, and keep conflicts explicit until reviewed.
+
+Changing narrative should normally reuse parsed evidence and result units and rebuild only deliverables. Enrich an older manifest without replacing annotations:
+
+```text
+python scripts/paper_evidence.py migrate paper-evidence.json --narrative logic-chain
+```
+
+Plan a depth or narrative change explicitly:
+
+```text
+python scripts/paper_evidence.py plan paper-evidence.json --source paper.pdf --mode deep --narrative presentation
+```

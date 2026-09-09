@@ -12,6 +12,7 @@ def main() -> None:
         "SKILL.md", "agents/openai.yaml", "schemas/paper-evidence.schema.json",
         "references/modes.md", "references/evidence-cache.md", "references/configuration.md",
         "references/interpretation-core.md", "references/figure-workflow.md",
+        "references/logic-chain.md",
         "references/obsidian-output.md", "references/presentation-guidance.md", "references/wechat-output.md",
         "scripts/paper_evidence.py", "scripts/extract_pdf_figures.py", "LICENSE", "README.md",
     ]
@@ -19,7 +20,7 @@ def main() -> None:
     if missing:
         raise SystemExit("missing: " + ", ".join(missing))
     skill = (root / "SKILL.md").read_text(encoding="utf-8")
-    for marker in ("name: interpret-research-paper", "quick", "standard", "deep", "paper-evidence.json"):
+    for marker in ("name: interpret-research-paper", "quick", "standard", "deep", "logic-chain", "paper-evidence.json"):
         if marker not in skill:
             raise SystemExit(f"SKILL.md missing marker: {marker}")
     skill_lines = skill.splitlines()

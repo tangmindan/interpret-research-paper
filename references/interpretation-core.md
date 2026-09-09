@@ -23,7 +23,7 @@ For computational papers, summarize method innovation, benchmark difficulty and 
 
 At first occurrence, write technical terms as Chinese name + English full name + abbreviation. Explain unfamiliar infrastructure briefly by purpose; move secondary background to a glossary or further reading.
 
-## Evidence map
+## Evidence map and reasoning model
 
 Create a compact internal map before drafting:
 
@@ -31,6 +31,8 @@ Create a compact internal map before drafting:
 |---|---|---|---|---|
 
 Keep claims close to this evidence in the final artifact.
+
+When the user needs scientific reasoning rather than source-order reading, convert claims into result units using [logic-chain.md](logic-chain.md). Figures remain evidence references, not mandatory top-level sections.
 
 ## Study design audit
 

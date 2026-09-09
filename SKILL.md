@@ -11,6 +11,8 @@ Treat interpretation as an iterative evidence workflow, not a one-shot summary.
 
 Select the least expensive mode that satisfies the request: `quick` for triage, `standard` for a reusable complete note, or `deep` for panel-, supplement-, or presentation-grade work. Respect an explicit choice and read [references/modes.md](references/modes.md). A higher mode extends verified prior work instead of replacing it.
 
+Choose narrative independently from depth: `figure` follows the source, `logic-chain` reconstructs scientific reasoning, and `presentation` optimizes audience understanding. Read [references/logic-chain.md](references/logic-chain.md) for logic-chain or presentation work. Do not treat Figure order as the canonical reasoning order.
+
 Produce only the artifact requested now. Do not create notes, slides, articles, or persistent library files merely because the Skill supports them.
 
 ## Required evidence rules
@@ -27,7 +29,7 @@ Produce only the artifact requested now. Do not create notes, slides, articles, 
 
 1. Resolve the paper identity, requested mode, requested artifact, and authorized output location.
 2. Build a source map covering bibliography, question, cohorts/data, methods, figures, results, limitations, and code/data availability.
-3. Extract an evidence map before writing, then construct the requested narrative around claims and their evidence.
+3. Extract an evidence map before writing, then construct result units and project them into the requested narrative.
 4. Inspect and verify every source element required by the selected mode.
 5. Deliver the requested artifact with unresolved questions and evidence boundaries visible.
 
@@ -39,7 +41,7 @@ For `standard` or `deep` work, method/statistics teaching, or critical appraisal
 - For persistent paths or reusable project settings, read [references/configuration.md](references/configuration.md).
 - For `paper-evidence.json`, caching, or a repeated/incremental run, read [references/evidence-cache.md](references/evidence-cache.md) and use `scripts/paper_evidence.py`.
 - For an Obsidian note or library import, read [references/obsidian-output.md](references/obsidian-output.md) and start from [assets/literature-note-template.md](assets/literature-note-template.md).
-- For a literature-sharing deck, read [references/presentation-guidance.md](references/presentation-guidance.md) and use the presentations skill.
+- For a literature-sharing deck, read [references/logic-chain.md](references/logic-chain.md) and [references/presentation-guidance.md](references/presentation-guidance.md), then use the presentations skill.
 - For a WeChat or accessible literature article, read [references/wechat-output.md](references/wechat-output.md).
 
 Read only the references needed for the current request. The required evidence rules above apply in every route.
@@ -51,7 +53,7 @@ For persistent or incremental work, store machine-readable evidence in `paper-ev
 Before repeating work, run:
 
 ```text
-python scripts/paper_evidence.py plan paper-evidence.json --source <paper> --mode <mode>
+python scripts/paper_evidence.py plan paper-evidence.json --source <paper> --mode <mode> --narrative <figure|logic-chain|presentation>
 ```
 
 Follow the returned invalidation plan and preserve `user_annotations`. A file's existence or timestamp alone does not make cached evidence valid.

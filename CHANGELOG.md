@@ -4,6 +4,20 @@ This project follows Semantic Versioning.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-09
+
+### Added
+
+- Independent `figure`, `logic-chain`, and `presentation` narrative views alongside evidence-depth modes.
+- Reusable scientific `result_units` connecting prior finding, question, experimental rationale, strategy, answer, evidence, boundary, and next question.
+- Audience-specific `presentation_plans` with source order, presentation order, reorder rationale, and multi-slide result modules.
+- A separate incremental `reasoning` stage and a backward-compatible `migrate` command that preserves user annotations.
+
+### Changed
+
+- Result interpretation is no longer structurally rooted in Figure order.
+- Presentation guidance treats a major result as a slide module rather than forcing one result onto one slide.
+
 ## [1.0.2] - 2026-09-08
 
 ### Changed

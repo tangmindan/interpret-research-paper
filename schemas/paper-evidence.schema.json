@@ -38,6 +38,19 @@
       },
       "additionalProperties": false
     },
+    "narrative": {
+      "type": "object",
+      "required": ["requested", "completed"],
+      "properties": {
+        "requested": {"enum": ["figure", "logic-chain", "presentation"]},
+        "completed": {
+          "type": "array",
+          "items": {"enum": ["figure", "logic-chain", "presentation"]},
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
     "fingerprints": {"type": "object", "additionalProperties": {"type": "string"}},
     "stages": {
       "type": "object",
@@ -80,6 +93,73 @@
           "file": {"type": ["string", "null"]},
           "qa_status": {"enum": ["pending", "passed", "failed"]},
           "panels": {"type": "array", "items": {"type": "object"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "result_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "result_id", "main_answer", "previous_finding", "current_question",
+          "why_this_experiment", "strategy", "evidence", "boundary", "what_this_leads_to_next"
+        ],
+        "properties": {
+          "result_id": {"type": "string", "minLength": 1},
+          "source_order": {"type": ["integer", "null"], "minimum": 1},
+          "previous_finding": {"type": "string"},
+          "current_question": {"type": "string"},
+          "why_this_experiment": {"type": "string"},
+          "strategy": {"type": "string"},
+          "main_answer": {"type": "string", "minLength": 1},
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["ref", "role"],
+              "properties": {
+                "ref": {"type": "string", "minLength": 1},
+                "role": {"type": "string", "minLength": 1},
+                "claim_id": {"type": ["string", "null"]}
+              },
+              "additionalProperties": true
+            }
+          },
+          "boundary": {"type": "string"},
+          "what_this_leads_to_next": {"type": "string"},
+          "depends_on": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+        },
+        "additionalProperties": true
+      }
+    },
+    "presentation_plans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["plan_id", "goal", "audience", "source_order", "presentation_order", "modules"],
+        "properties": {
+          "plan_id": {"type": "string", "minLength": 1},
+          "goal": {"type": "string", "minLength": 1},
+          "audience": {"type": "string", "minLength": 1},
+          "source_order": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "presentation_order": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "reorder_rationale": {"type": "array", "items": {"type": "object"}},
+          "modules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["result_id", "slide_count", "headline", "slides"],
+              "properties": {
+                "result_id": {"type": "string"},
+                "slide_count": {"type": "integer", "minimum": 1},
+                "headline": {"type": "string"},
+                "slides": {"type": "array", "minItems": 1, "items": {"type": "object"}}
+              },
+              "additionalProperties": true
+            }
+          }
         },
         "additionalProperties": true
       }

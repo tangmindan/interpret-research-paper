@@ -2,6 +2,8 @@
 
 Mode controls depth, not scientific honesty. Use the smallest mode that answers the request.
 
+Mode is independent of narrative view. `quick`, `standard`, and `deep` control evidence depth; `figure`, `logic-chain`, and `presentation` control organization. For example, a request may use `deep + presentation` or `standard + logic-chain`.
+
 ## quick
 
 For triage. Record canonical identity, source hash, contribution, question, cohort/data, method outline, headline findings, principal figures, one major limitation, and unresolved checks. Skip exhaustive panels, supplements, presentations, and external novelty checks unless requested.

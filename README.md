@@ -8,11 +8,19 @@ Most paper readers optimize for summaries. This project optimizes for traceabili
 
 The entrypoint is intentionally thin. `SKILL.md` keeps cross-task evidence rules and routes to task-specific files under `references/`; a quick read does not load Obsidian, slide, article, or deep-statistics instructions unnecessarily.
 
+Scientific reasoning is modeled separately from evidence storage. Stable result units connect prior finding → current question → experimental rationale → strategy → answer → evidence boundary → next question. The same units can be projected into source-Figure order, a scientific logic chain, or an audience-oriented presentation without changing the underlying evidence.
+
 ## Modes
 
 - `quick`: first-pass triage.
 - `standard`: complete reusable note; default.
 - `deep`: panel-level, supplement-aware, review/presentation-grade analysis.
+
+Depth is independent from narrative:
+
+- `figure`: follow the paper's source order for audit and close reading.
+- `logic-chain`: organize by scientific dependencies and inferential advances.
+- `presentation`: construct an audience-oriented storyboard and record reorder rationale.
 
 ## Install
 
@@ -41,13 +49,19 @@ For persistent Obsidian or slide output, pass `vault_root`, `note_dir`, `figure_
 Initialize state:
 
 ```bash
-python scripts/paper_evidence.py init --source paper.pdf --doi 10.xxxx/example --mode standard --output paper-evidence.json
+python scripts/paper_evidence.py init --source paper.pdf --doi 10.xxxx/example --mode standard --narrative logic-chain --output paper-evidence.json
 ```
 
 Check what must be recomputed:
 
 ```bash
-python scripts/paper_evidence.py plan paper-evidence.json --source paper.pdf --mode deep
+python scripts/paper_evidence.py plan paper-evidence.json --source paper.pdf --mode deep --narrative presentation
+```
+
+Enrich an older manifest while preserving annotations:
+
+```bash
+python scripts/paper_evidence.py migrate paper-evidence.json --narrative logic-chain
 ```
 
 Validate it:
@@ -57,6 +71,8 @@ python scripts/validate_evidence.py paper-evidence.json
 ```
 
 The canonical paper identity uses DOI, PMID, arXiv ID, or a source hash in that order. Exact file editions use a separate SHA-256 fingerprint. Changes invalidate only dependent stages.
+
+`result_units` bridge evidence and writing. `presentation_plans` store audience, goal, source order, presentation order, reorder reasons, and one-or-more-slide modules. A result maps to a slide module, not rigidly to one slide.
 
 ## Figure extraction
 
